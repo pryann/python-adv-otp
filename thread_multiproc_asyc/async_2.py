@@ -1,12 +1,13 @@
 import asyncio
+import re
 from time import perf_counter
 
 
-async def get_http_request():
-    print("GET request started...")
+async def get_http_request(id):
+    print(f"GET request {id} started...")
     await asyncio.sleep(2)
-    print("GET request done")
-    return "Get data"
+    print(f"GET request {id} done")
+    return f"Get data {id}"
 
 
 async def post_http_request():
@@ -25,6 +26,10 @@ async def post_http_request():
 #     await post
 #     print(f"Get response: {get.result()}, Post response: {post.result()}")
 
+
+async def main():
+    requests = [get_http_request(i + 1) for i in range(100)]
+    await asyncio.gather(*requests)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,11 @@
+services:
+  employees-mariadb:
+    image: mariadb
+    container_name: employees-mariadb
+    environment:
+      MYSQL_DATABASE: employees
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"

@@ -31,11 +31,19 @@ class Employee:
         top_salary = 120_000
         self.__salary = value if value < top_salary else top_salary
 
+    @salary.deleter
+    def salary(self):
+        print("Person is fired")
+        del self.__salary
+
 
 if __name__ == "__main__":
     person = Employee("John", "Doe", 100_000)
     print(person.salary)
     person.salary = 150_000
+    print(person.salary)
+    del person.salary
+    # AttributeError: 'Employee' object has no attribute '_Employee__salary'
     print(person.salary)
 
     # print(person.get_salary())
